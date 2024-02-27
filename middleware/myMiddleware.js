@@ -11,18 +11,17 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+
 import Cookies from "js-cookie";
 
 const protectedRoutes = ["/profile"];
 
 export default function ({route, redirect}) {
+  const casdoorUserCookie = Cookies.get('casdoorUser');
+  console.log('casdoorUserCookie: ', casdoorUserCookie);
+  const isAuthenticated = !!casdoorUserCookie;
 
-    const casdoorUserCookie = Cookies.get('casdoorUser');
-    console.log('casdoorUserCookie: ', casdoorUserCookie);
-    const isAuthenticated = casdoorUserCookie ? true : false;
-
-    if (!isAuthenticated && protectedRoutes.includes(route.path)) {
-        redirect('/login');
-      }
-
+  if (!isAuthenticated && protectedRoutes.includes(route.path)) {
+    redirect('/login');
+  }
 }

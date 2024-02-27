@@ -11,42 +11,43 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+
 <template>
-    <div>signing...</div>
-  </template>
-  
-  <script>
+  <div>signing...</div>
+</template>
+
+<script>
 import Cookies from 'js-cookie';
 import Sdk from 'casdoor-js-sdk';
 import sdkConfig from '@/conf';
 
 export default {
-    name: 'AuthCallback',
-    
-    mounted() {
-        const CasdoorSDK = new Sdk(sdkConfig);
-        const additionalParams = {
-            client_secret: sdkConfig.clientSecret,
-        };
+  name: 'AuthCallback',
 
-        CasdoorSDK.exchangeForAccessToken(additionalParams)
-        .then((res) => {
-            if (res && res.access_token) {
-                return CasdoorSDK.getUserInfo(res.access_token);
-            }
-        })
-        .then((res) => {
-            const casdoorUserInfo = res;
-            console.log('casdoorUserInfo:', casdoorUserInfo);
-            Cookies.set('casdoorUser', JSON.stringify(casdoorUserInfo));
-            this.$router.push('/profile');
-        })
-        .catch((error) => {
-            console.error('Failed to get access_token:', error);
-            this.$router.push('/');
-        });
+  mounted() {
+    const CasdoorSDK = new Sdk(sdkConfig);
+    const additionalParams = {
+      client_secret: sdkConfig.clientSecret,
+    };
 
-        return <div>signing...</div>;
-    },
+    CasdoorSDK.exchangeForAccessToken(additionalParams)
+      .then((res) => {
+        if (res && res.access_token) {
+          return CasdoorSDK.getUserInfo(res.access_token);
+        }
+      })
+      .then((res) => {
+        const casdoorUserInfo = res;
+        console.log('casdoorUserInfo:', casdoorUserInfo);
+        Cookies.set('casdoorUser', JSON.stringify(casdoorUserInfo));
+        this.$router.push('/profile');
+      })
+      .catch((error) => {
+        console.error('Failed to get access_token:', error);
+        this.$router.push('/');
+      });
+
+    return <div>signing...</div>;
+  },
 };
 </script>

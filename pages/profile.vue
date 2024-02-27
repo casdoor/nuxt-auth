@@ -11,63 +11,61 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+
 <template>
-    <div>
-      <h1>Hello {{ userJson.name }}!</h1>
-      <hr>
-      <div class="container">
-        <table>
-          <tbody>
-            <tr>
-              <td>Username</td>
-              <td>{{ userJson.preferred_username }}</td>
-            </tr>
-            <tr>
-              <td>Display Name</td>
-              <td>{{ userJson.name }}</td>
-            </tr>
-            <tr>
-              <td>User ID</td>
-              <td>{{ userJson.sub }}</td>
-            </tr>
-            <tr>
-              <td>Avatar</td>
-              <td><img :src="userJson.picture" alt="Avatar"></td>
-            </tr>
-          </tbody>
-        </table>
-        <br>
-        <button @click="handleLogout">Logout</button>
-      </div>
+  <div>
+    <h1>Hello {{ userJson.name }}!</h1>
+    <hr>
+    <div class="container">
+      <table>
+        <tbody>
+        <tr>
+          <td>Username</td>
+          <td>{{ userJson.preferred_username }}</td>
+        </tr>
+        <tr>
+          <td>Display Name</td>
+          <td>{{ userJson.name }}</td>
+        </tr>
+        <tr>
+          <td>User ID</td>
+          <td>{{ userJson.sub }}</td>
+        </tr>
+        <tr>
+          <td>Avatar</td>
+          <td><img :src="userJson.picture" alt="Avatar"></td>
+        </tr>
+        </tbody>
+      </table>
+      <br>
+      <button @click="handleLogout">Logout</button>
     </div>
-  </template>
-  
-  <script>
-  
-  import Cookies from 'js-cookie';
-  
-  export default {
-    name: 'Page',
-    data() {
-      return {
-        userJson: {}
-      };
-    },
-    mounted() {
-      const user = Cookies.get('casdoorUser');
-      this.userJson = user ? JSON.parse(user) : {};
-      console.log(this.userJson)
-    },
-    methods: {
-      handleLogout() {
-        Cookies.remove('casdoorUser');
-        this.$router.push('/');
-      }
+  </div>
+</template>
+
+<script>
+import Cookies from 'js-cookie';
+
+export default {
+  name: 'Page',
+  data() {
+    return {
+      userJson: {}
+    };
+  },
+  mounted() {
+    const user = Cookies.get('casdoorUser');
+    this.userJson = user ? JSON.parse(user) : {};
+    console.log(this.userJson)
+  },
+  methods: {
+    handleLogout() {
+      Cookies.remove('casdoorUser');
+      this.$router.push('/');
     }
-  };
-  </script>
-  
-  <style scoped>
-  
-  </style>
-  
+  }
+};
+</script>
+
+<style scoped>
+</style>
