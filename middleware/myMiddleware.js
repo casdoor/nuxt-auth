@@ -18,7 +18,6 @@ const protectedRoutes = ["/profile"];
 
 export default function ({route, redirect}) {
   const casdoorUserCookie = Cookies.get('casdoorUser');
-  console.log('casdoorUserCookie: ', casdoorUserCookie);
   const isAuthenticated = !!casdoorUserCookie;
 
   if (!isAuthenticated && protectedRoutes.includes(route.path)) {

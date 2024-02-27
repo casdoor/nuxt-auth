@@ -5,7 +5,8 @@ A Nuxt.js example for Casdoor SSO.
 
 ## Demo video
 
-![Login](static/demo.mp4)
+![Login](./static/demo.gif)
+
 
 ## Configuration
 
