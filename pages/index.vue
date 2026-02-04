@@ -15,6 +15,6 @@
 <template>
   <div>
     <h1>Casdoor Nuxt.js Auth Example</h1>
-    <nuxt-link to="/profile">Login</nuxt-link>
+    <NuxtLink to="/profile">Login</NuxtLink>
   </div>
 </template>

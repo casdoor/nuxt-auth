@@ -16,11 +16,11 @@ import Cookies from "js-cookie";
 
 const protectedRoutes = ["/profile"];
 
-export default function ({route, redirect}) {
+export default defineNuxtRouteMiddleware((to, from) => {
   const casdoorUserCookie = Cookies.get('casdoorUser');
   const isAuthenticated = !!casdoorUserCookie;
 
-  if (!isAuthenticated && protectedRoutes.includes(route.path)) {
-    redirect('/login');
+  if (!isAuthenticated && protectedRoutes.includes(to.path)) {
+    return navigateTo('/login');
   }
-}
+})
