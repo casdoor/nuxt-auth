@@ -1,7 +1,7 @@
 nuxt-auth
 =======
 
-A Nuxt.js example for Casdoor SSO.
+A Nuxt 3 example for Casdoor SSO.
 
 ## Demo video
 
@@ -27,10 +27,36 @@ export default sdkConfig;
 
 ## Getting started
 
-run the development server:
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run the development server:
 
 ```bash
 npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## Building for Production
+
+Build the application:
+
+```bash
+npm run build
+```
+
+Generate static files:
+
+```bash
+npm run generate
+```
+
+Preview the production build:
+
+```bash
+npm run preview
+```
