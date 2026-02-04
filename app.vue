@@ -1,23 +1,17 @@
 <template>
   <div id="app">
     <nav>
-      <router-link to="/">Home</router-link>
-      <router-link to="/about">About</router-link>
+      <NuxtLink to="/">Home</NuxtLink>
+      <NuxtLink to="/about">About</NuxtLink>
     </nav>
 
-    <router-view></router-view>
+    <NuxtPage />
 
     <footer>
       © 2024 My Awesome App
     </footer>
   </div>
 </template>
-
-<script>
-export default {
-  name: 'App',
-}
-</script>
 
 <style>
 body {

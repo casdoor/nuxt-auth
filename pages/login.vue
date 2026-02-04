@@ -16,15 +16,12 @@
   <div></div>
 </template>
 
-<script>
+<script setup>
 import Sdk from "casdoor-js-sdk";
 import sdkConfig from "@/conf";
 
-export default {
-  name: 'Login',
-  mounted() {
-    const casdoorSDK = new Sdk(sdkConfig);
-    casdoorSDK.signin_redirect();
-  }
-}
+onMounted(() => {
+  const casdoorSDK = new Sdk(sdkConfig);
+  casdoorSDK.signin_redirect();
+});
 </script>

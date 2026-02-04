@@ -43,27 +43,21 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import Cookies from 'js-cookie';
 
-export default {
-  name: 'Page',
-  data() {
-    return {
-      userJson: {}
-    };
-  },
-  mounted() {
-    const user = Cookies.get('casdoorUser');
-    this.userJson = user ? JSON.parse(user) : {};
-    console.log(this.userJson)
-  },
-  methods: {
-    handleLogout() {
-      Cookies.remove('casdoorUser');
-      this.$router.push('/');
-    }
-  }
+const router = useRouter();
+const userJson = ref({});
+
+onMounted(() => {
+  const user = Cookies.get('casdoorUser');
+  userJson.value = user ? JSON.parse(user) : {};
+  console.log(userJson.value);
+});
+
+const handleLogout = () => {
+  Cookies.remove('casdoorUser');
+  router.push('/');
 };
 </script>
 
